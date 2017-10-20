@@ -29,22 +29,34 @@ int main (string[] args) {
   window.set_default_size (350, 70);
   window.destroy.connect (Gtk.main_quit);
 
-  var grid = new Gtk.Grid ();
-  grid.orientation = Gtk.Orientation.VERTICAL;
-  grid.row_spacing = 6;
+  var layout = new Gtk.Grid ();
+  layout.column_spacing = 6;
+  layout.row_spacing = 6;
 
-  var button = new Gtk.Button.with_label ("Click me!");
-  var label = new Gtk.Label (null);
+  var hello_button = new Gtk.Button.with_label (_("Say Hello"));
+  var hello_label = new Gtk.Label (null);
 
-  button.clicked.connect (() => {
-      label.label = _("Hello World!");
-      button.sensitive = false;
+  var rotate_button = new Gtk.Button.with_label (_("Rotate"));
+  var rotate_label = new Gtk.Label (_("Horizontal"));
+
+  layout.attach (hello_button, 0, 0, 1, 1);
+  layout.attach_next_to (hello_label, hello_button, Gtk.PositionType.RIGHT, 1, 1);
+
+  layout.attach (rotate_button, 0, 1, 1, 1);
+  layout.attach_next_to (rotate_label, rotate_button, Gtk.PositionType.RIGHT, 1, 1);
+
+  hello_button.clicked.connect (() => {
+      hello_label.label = _("Hello World!");
+      hello_button.sensitive = false;
   });
 
-  grid.add (button);
-  grid.add (label);
+  rotate_button.clicked.connect (() => {
+      rotate_label.angle = 90;
+      rotate_label.label = _("Vertical");
+      rotate_button.sensitive = false;
+  });
 
-  window.add (grid);
+  window.add (layout);
   window.show_all ();
 
   Gtk.main ();
