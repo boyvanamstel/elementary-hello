@@ -23,12 +23,19 @@ int main (string[] args) {
   Gtk.init (ref args);
 
   var window = new Gtk.Window ();
-  window.title = "Hello World!";
+  window.title = "Elementary Grids";
   window.set_border_width (12);
   window.set_position (Gtk.WindowPosition.CENTER);
   window.set_default_size (350, 70);
   window.destroy.connect (Gtk.main_quit);
 
+  var grid = new Gtk.Grid ();
+  grid.orientation = Gtk.Orientation.VERTICAL;
+
+  grid.add (new Gtk.Label (_("Label 1")));
+  grid.add (new Gtk.Label (_("Label 2")));
+
+  window.add (grid);
   window.show_all ();
 
   Gtk.main ();
