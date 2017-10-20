@@ -12,9 +12,9 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/src)
     set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 
 # what to call that directory where we install data too
-    set (PKGDATADIR "${DATADIR}/com.github.boyvanamstel.elementary-hello.hello-again")
+    set (PKGDATADIR "${DATADIR}/com.github.boyvanamstel.elementary-hello.hello-grid")
 
-    set (EXEC_NAME "com.github.boyvanamstel.elementary-hello.hello-again")
+    set (EXEC_NAME "com.github.boyvanamstel.elementary-hello.hello-grid")
     set (RELEASE_NAME "A hello world.")
     set (VERSION "0.1")
     set (VERSION_INFO "What's up world?")
@@ -39,7 +39,7 @@ include(ValaVersion)
 # files we want to compile
 include(ValaPrecompile)
     vala_precompile(VALA_C ${EXEC_NAME}
-            src/hello-again.vala
+            src/hello-grid.vala
 
 # tell what libraries to use when compiling
             PACKAGES
@@ -53,7 +53,7 @@ add_executable(${EXEC_NAME} ${VALA_C})
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 
 # install our .desktop file so the Applications menu will see it
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.boyvanamstel.elementary-hello.hello-again.desktop DESTINATION ${DATADIR}/applications/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.boyvanamstel.elementary-hello.hello-grid.desktop DESTINATION ${DATADIR}/applications/)
 
 # install our .appdata.xml file so AppCenter will see it
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.boyvanamstel.elementary-hello.hello-again.appdata.xml DESTINATION ${DATADIR}/metainfo/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.boyvanamstel.elementary-hello.hello-grid.appdata.xml DESTINATION ${DATADIR}/metainfo/)
