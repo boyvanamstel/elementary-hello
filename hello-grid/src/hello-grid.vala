@@ -31,9 +31,18 @@ int main (string[] args) {
 
   var grid = new Gtk.Grid ();
   grid.orientation = Gtk.Orientation.VERTICAL;
+  grid.row_spacing = 6;
 
-  grid.add (new Gtk.Label (_("Label 1")));
-  grid.add (new Gtk.Label (_("Label 2")));
+  var button = new Gtk.Button.with_label ("Click me!");
+  var label = new Gtk.Label (null);
+
+  button.clicked.connect (() => {
+      label.label = _("Hello World!");
+      button.sensitive = false;
+  });
+
+  grid.add (button);
+  grid.add (label);
 
   window.add (grid);
   window.show_all ();
